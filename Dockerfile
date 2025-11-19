@@ -2,7 +2,7 @@
 # This stage builds our .jar file using Maven
 
 # Use an official "builder" image that has Maven and Java (JDK 17)
-FROM eclipse-temurin:17-jdk-jammy as builder
+FROM eclipse-temurin:21-jdk-jammy as builder
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -28,7 +28,7 @@ RUN ./mvnw package -DskipTests
 # This stage builds the final, small image that will *run* our app
 
 # Use a small, secure "runtime" image that only has Java (JRE 17)
-FROM eclipse-temurin:17-jre-jammy
+FROM eclipse-temurin:21-jre-jammy
 
 # Set the working directory
 WORKDIR /app
